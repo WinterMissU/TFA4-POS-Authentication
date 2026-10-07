@@ -1,4 +1,5 @@
 <?php helper('url'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +10,23 @@
 </head>
 <body>
     <main class="container">
+
         <nav>
             <strong>POS / ACCOUNTS</strong>
+
             <div>
                 <a href="<?= site_url('customers') ?>">Customers</a>
                 <a href="<?= site_url('users') ?>">Users</a>
+
+                <?= view('partials/navigation') ?>
             </div>
         </nav>
 
         <header>
             <span>01 / ACCOUNTS</span>
+
             <h1>Customer Accounts</h1>
+
             <p>Customer records from the POS database.</p>
 
             <a class="button" href="<?= site_url('customers/new') ?>">
@@ -44,6 +51,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php if (empty($customers)): ?>
                         <tr>
@@ -52,13 +60,27 @@
                     <?php else: ?>
                         <?php foreach ($customers as $customer): ?>
                             <tr>
-                                <td><?= esc($customer['full_name']) ?></td>
-                                <td><?= esc($customer['email']) ?></td>
-                                <td><?= esc($customer['phone'] ?? '') ?></td>
-                                <td><?= esc($customer['created_at']) ?></td>
                                 <td>
-                                    <a class="row-link"
-                                       href="<?= site_url('customers/' . (int) $customer['id'] . '/edit') ?>">
+                                    <?= esc($customer['full_name']) ?>
+                                </td>
+
+                                <td>
+                                    <?= esc($customer['email']) ?>
+                                </td>
+
+                                <td>
+                                    <?= esc($customer['phone'] ?? '') ?>
+                                </td>
+
+                                <td>
+                                    <?= esc($customer['created_at']) ?>
+                                </td>
+
+                                <td>
+                                    <a
+                                        class="row-link"
+                                        href="<?= site_url('customers/' . (int) $customer['id'] . '/edit') ?>"
+                                    >
                                         Edit
                                     </a>
                                 </td>
@@ -68,6 +90,7 @@
                 </tbody>
             </table>
         </div>
+
     </main>
 </body>
 </html>

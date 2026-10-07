@@ -1,4 +1,5 @@
 <?php helper('url'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +10,23 @@
 </head>
 <body>
     <main class="container">
+
         <nav>
             <strong>POS / ACCOUNTS</strong>
+
             <div>
                 <a href="<?= site_url('customers') ?>">Customers</a>
                 <a href="<?= site_url('users') ?>">Users</a>
+
+                <?= view('partials/navigation') ?>
             </div>
         </nav>
 
         <header>
             <span>02 / ACCOUNTS</span>
+
             <h1>User Accounts</h1>
+
             <p>User records from the POS database.</p>
 
             <a class="button" href="<?= site_url('users/new') ?>">
@@ -44,6 +51,7 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <?php if (empty($users)): ?>
                         <tr>
@@ -78,9 +86,19 @@
                                         alt="Profile picture for <?= esc($user['full_name'], 'attr') ?>"
                                     >
                                 </td>
-                                <td><?= esc($user['username']) ?></td>
-                                <td><?= esc($user['full_name']) ?></td>
-                                <td><?= esc($user['created_at']) ?></td>
+
+                                <td>
+                                    <?= esc($user['username']) ?>
+                                </td>
+
+                                <td>
+                                    <?= esc($user['full_name']) ?>
+                                </td>
+
+                                <td>
+                                    <?= esc($user['created_at']) ?>
+                                </td>
+
                                 <td>
                                     <a
                                         class="row-link"
@@ -95,6 +113,7 @@
                 </tbody>
             </table>
         </div>
+
     </main>
 </body>
 </html>

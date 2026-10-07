@@ -1,3 +1,5 @@
+<?php helper('url'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +10,30 @@
 </head>
 <body>
     <main class="page">
+
+        <nav>
+            <strong>POS / ACCOUNTS</strong>
+
+            <div>
+                <a href="<?= site_url('customers') ?>">Customers</a>
+                <a href="<?= site_url('users') ?>">Users</a>
+
+                <?= view('partials/navigation') ?>
+            </div>
+        </nav>
+
         <a class="back-link" href="<?= site_url('users') ?>">
             ← Back to User Accounts
         </a>
 
         <section class="form-card">
             <p class="eyebrow">USER ACCOUNTS</p>
+
             <h1><?= esc($title) ?></h1>
-            <p class="intro">Enter the user's account information below.</p>
+
+            <p class="intro">
+                Enter the user's account information below.
+            </p>
 
             <?php if (session()->getFlashdata('upload_error')): ?>
                 <p class="notice-error">
@@ -32,6 +50,7 @@
 
                 <div class="field">
                     <label for="username">Username *</label>
+
                     <input
                         type="text"
                         id="username"
@@ -40,11 +59,13 @@
                         maxlength="50"
                         required
                     >
+
                     <?= validation_show_error('username') ?>
                 </div>
 
                 <div class="field">
                     <label for="full_name">Full name *</label>
+
                     <input
                         type="text"
                         id="full_name"
@@ -53,6 +74,7 @@
                         maxlength="150"
                         required
                     >
+
                     <?= validation_show_error('full_name') ?>
                 </div>
 
@@ -62,6 +84,7 @@
 
                         <?php if (! empty($user['avatar'])): ?>
                             <p>Current picture:</p>
+
                             <img
                                 class="avatar-preview"
                                 src="<?= esc(
@@ -82,7 +105,10 @@
                             accept=".jpg,.jpeg,.png,image/jpeg,image/png"
                         >
 
-                        <p class="hint">Optional. JPG or PNG, up to 2 MB.</p>
+                        <p class="hint">
+                            Optional. JPG or PNG, up to 2 MB.
+                        </p>
+
                         <?= validation_show_error('avatar') ?>
                     </div>
                 <?php endif; ?>
@@ -92,13 +118,16 @@
                         <?= $user === null ? 'Add User' : 'Save Changes' ?>
                     </button>
 
-                    <a class="button button-secondary"
-                       href="<?= site_url('users') ?>">
+                    <a
+                        class="button button-secondary"
+                        href="<?= site_url('users') ?>"
+                    >
                         Cancel
                     </a>
                 </div>
             </form>
         </section>
+
     </main>
 </body>
 </html>
